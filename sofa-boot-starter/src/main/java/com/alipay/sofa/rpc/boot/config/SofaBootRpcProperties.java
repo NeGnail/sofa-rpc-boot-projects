@@ -76,6 +76,9 @@ public class SofaBootRpcProperties {
     /* registry */
     private String      registryAddress;
 
+    /* disable metrics */
+    private String      disableMetricsCollect;
+
     public SofaBootRpcProperties(Environment environment) {
         this.environment = environment;
     }
@@ -339,6 +342,15 @@ public class SofaBootRpcProperties {
 
     public void setRestThreadPoolCoreSize(String restThreadPoolCoreSize) {
         this.restThreadPoolCoreSize = restThreadPoolCoreSize;
+    }
+
+    public String getDisableMetricsCollect() {
+        return StringUtils.isEmpty(disableMetricsCollect) ? getDotString(new Object() {
+        }.getClass().getEnclosingMethod().getName()) : disableMetricsCollect;
+    }
+
+    public void setDisableMetricsCollect(String disableMetricsCollect) {
+        this.disableMetricsCollect = disableMetricsCollect;
     }
 
     private String getDotString(String enclosingMethodName) {
